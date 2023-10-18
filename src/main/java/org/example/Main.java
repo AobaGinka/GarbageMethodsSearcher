@@ -2,7 +2,7 @@ package org.example;
 
 
 public class Main {
-    private static final String OUTPUT_PATH = "out/json/output.json";
+    private static final String OUTPUT_PATH = "out/json";
 
     public static void main(String[] args){
         // コマンドライン引数チェック

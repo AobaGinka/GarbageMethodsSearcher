@@ -8,6 +8,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class JsonGenerator {
@@ -30,12 +32,16 @@ public class JsonGenerator {
     }
 
     public void outputJsonFile(String path){
+        try{
+            Files.createDirectories(Paths.get(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        path += "/output.json";
         File file = new File(path);
         try {
-            if (file.createNewFile()){
-                System.out.println("[Info]ファイル作成に成功しました.");
-            }else{
-                System.out.println("[Error]ファイル作成に失敗しました.");
+            if(file.createNewFile()){
+                System.out.println("[Info]ファイルを作成しました.");
             }
             mapper.writeValue(file, this.root);
         } catch (IOException e) {
