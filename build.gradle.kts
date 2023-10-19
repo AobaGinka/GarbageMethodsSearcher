@@ -23,6 +23,6 @@ tasks.test {
 
 val jar by tasks.getting(Jar::class) {
     manifest {
-        attributes["Main-Class"] = "com.example.Main"
+        attributes["Main-Class"] = "org.example.Main"
     }
 }
